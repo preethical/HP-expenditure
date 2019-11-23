@@ -1,0 +1,72 @@
+---
+runtime: shiny
+title: "HP-Exploratory analysis"
+author: "preethi"
+date: "11/23/2019"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r load package, results='hide',message=FALSE,error=FALSE}
+library(googledrive)
+library(lubridate)
+library(ggplot2)
+library(dplyr)
+library(shiny)
+```
+```{r downloadfile, results='hide',message=FALSE,error=FALSE}
+temp <- tempfile(fileext = ".zip")
+dl <- drive_download(
+  as_id("https://drive.google.com/open?id=1dyKTsCDegBCDDBDVJRJAf_JIUxd8YcET"), path = temp, overwrite = TRUE)
+out <- unzip(temp, exdir = tempdir())
+expenditure <- read.csv(out, header = TRUE, stringsAsFactors = FALSE)
+expenditure$TRANSDATE <- as.Date(expenditure$TRANSDATE, format = "%Y-%m-%d")
+
+```
+```{r process}
+expenditure <- expenditure %>% mutate(month = month(TRANSDATE))
+##expenditure$month <- as.Date(paste0("2018-", expenditure$month,"-01"),"%Y-%m-%d")
+
+str(expenditure)
+```
+```{r mutate}
+
+Sumpayment <- expenditure %>% group_by(month,District,SOE_description)%>%summarise(Total = sum(NETPAYMENT, na.rm = TRUE))
+
+barplot <- ggplot(Sumpayment, aes(month, Total, group = Sumpayment$District))+geom_line(stat="identity", width = 1)+facet_wrap(~ Sumpayment$District)
+
+barplot
+```
+Sumpayment_AMB <- subset(Sumpayment, District =="AMB")
+
+Sumpayment_AMB_SOE <- Sumpayment_AMB %>% group_by(SOE_description)%>%summarise(Total = sum(Total, na.rm = TRUE))
+
+Sumpayment_AMB %>% ggplot(aes(x=month,y=Total))+ geom_bar(stat="identity")
+
+barplot <- ggplot(Sumpayment_AMB_SOE, aes(x="",y = Total, fill = SOE_description))+geom_bar(stat="identity", width = 1)
+```
+pie <- barplot + coord_polar("y", start=0)
+
+pie
+
+```
+
+            
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
