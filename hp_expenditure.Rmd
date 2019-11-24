@@ -1,5 +1,4 @@
 ---
-runtime: shiny
 title: "HP-Exploratory analysis"
 author: "preethi"
 date: "11/23/2019"
@@ -98,27 +97,34 @@ print(plot4a)
 
 There are supposed to be 12 districts in Himachal. There is a lot more data here. 
 
-```{r district}
+## data that is not working yet
 
-Districtspend <- expenditure %>% group_by(District)%>%summarise(Total = sum(NETPAYMENT, na.rm = TRUE))
+Districtspend <- expenditure %>% group_by(District)%>% summarise(Total = sum(NETPAYMENT, na.rm = TRUE))
 
-
+District_spending_month <- expenditure %>% group_by(month,District,SOE_description) %>% summarise(Total = sum(NETPAYMENT, na.rm = TRUE))
 
 ##total expenditure monthly per district
 
-barplot <- ggplot(Sumpayment, aes(month, Total, group = Sumpayment$District))+geom_line(stat="identity", width = 1)+facet_wrap(~ Sumpayment$District)
+district_plot <- ggplot(data = District_spending_month, aes(x=month,y=Total, group =1))+
+  geom_line(color = "darkorchid4") +
+   facet_wrap( ~ District, ncol = 7) +
+  labs(title = "Total Expenditure by district",
+           subtitle = "Data plotted by month",
+           y = "total expenditure",
+           x = "month") + theme_bw(base_size = 15) +
+          scale_y_continuous(labels = scales::comma)
 
-barplot
+print(district_plot)
 
 ##pie chart with district wise spending
 
-barplot <- ggplot(subset(Sumpayment, District == "AMB"), aes(x="",y = Total, fill = SOE_description))+geom_bar(stat="identity", width = 1)
+barplot <- ggplot(subset(District_spending_month, District == "AMB"), aes(x="",y = Total, fill = SOE_description))+geom_bar(stat="identity", width = 1)
 
 pie <- barplot + coord_polar("y", start=0)
 
 pie
 
-```
+
 
 ##not clean
 
