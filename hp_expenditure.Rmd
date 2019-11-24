@@ -92,9 +92,6 @@ plot4a <- ggplot(data = medical_budget.long, aes(x= month,y=value,color = variab
 
 print(plot4a)
 
-plot4 <- ggplot(data = medical_budget.long, aes(x= month,y=value,color = variable, group = 1))+ geom_line(size = 1)+ scale_y_continuous(labels = scales::comma)
-
-print(plot4)
 ```
 
 ## Districtwise Spending 
