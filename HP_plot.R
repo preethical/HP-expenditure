@@ -59,14 +59,7 @@ trace4 <- list(
   y = subset(Sumpayment, District =="ARKI")$Total
 )
 
-
-
-
-
-
-
-
-data <- list(trace1)
+data <- list(trace1,trace2,trace3,trace4)
 layout <- list(
   title = "2016 Summer Olympic Medal Count", 
   updatemenus = list(
@@ -75,27 +68,27 @@ layout <- list(
       y = 1, 
       buttons = list(
         list(
-          args = c("visible", c(TRUE, TRUE, TRUE, TRUE)), 
+          args = c("visible", c(TRUE, FALSE, FALSE, FALSE)), 
           label = "All", 
           method = "restyle"
         ), 
         list(
-          args = c("visible", c(TRUE, FALSE, FALSE, FALSE)), 
+          args = c("visible", c(FALSE, TRUE, FALSE, FALSE)), 
           label = "AMB", 
           method = "restyle"
         ), 
         list(
-          args = c("visible", c(FALSE, TRUE, FALSE, FALSE)), 
-          label = "Silver", 
+          args = c("visible", c(FALSE,FALSE,TRUE, FALSE)), 
+          label = "ANI", 
           method = "restyle"
         ), 
         list(
-          args = c("visible", c(FALSE, FALSE, TRUE, FALSE)), 
-          label = "Bronze", 
+          args = c("visible", c(FALSE, FALSE,FALSE,TRUE)), 
+          label = "ARKI", 
           method = "restyle"
         ), 
         list(
-          args = c("visible", c(FALSE, FALSE, FALSE, TRUE)), 
+          args = c("visible", c(FALSE, FALSE, FALSE,FALSE)), 
           label = "Total", 
           method = "restyle"
         )
@@ -107,5 +100,7 @@ layout <- list(
 p <- plot_ly()
 p <- add_trace(p, line=trace1$line, name=trace1$name, type=trace1$type, x=trace1$x, y=trace1$y)
 p <- add_trace(p, line=trace2$line, name=trace2$name, type=trace2$type, x=trace2$x, y=trace2$y)
+p <- add_trace(p, line=trace3$line, name=trace3$name, type=trace3$type, x=trace3$x, y=trace3$y)
+p <- add_trace(p, line=trace4$line, name=trace4$name, type=trace4$type, x=trace4$x, y=trace4$y)
 p <- layout(p, title=layout$title, updatemenus=layout$updatemenus)
 

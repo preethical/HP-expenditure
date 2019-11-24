@@ -9,64 +9,123 @@ output: pdf_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+Loaded the required packages
 
 ```{r load package, results='hide',message=FALSE,error=FALSE}
 library(googledrive)
 library(lubridate)
 library(ggplot2)
 library(dplyr)
-library(shiny)
+library(scales)
+library(reshape2)
 ```
+
+Download file and read it
+
 ```{r downloadfile, results='hide',message=FALSE,error=FALSE}
 temp <- tempfile(fileext = ".zip")
 dl <- drive_download(
   as_id("https://drive.google.com/open?id=1dyKTsCDegBCDDBDVJRJAf_JIUxd8YcET"), path = temp, overwrite = TRUE)
 out <- unzip(temp, exdir = tempdir())
 expenditure <- read.csv(out, header = TRUE, stringsAsFactors = FALSE)
+
+budget <- read.csv("hoa_wise_prep_data.csv", header = TRUE, stringsAsFactors = FALSE)
+```
+
+```{r time, results='hide',message=FALSE,error=FALSE}
+## change date format
 expenditure$TRANSDATE <- as.Date(expenditure$TRANSDATE, format = "%Y-%m-%d")
-
+budget$date <- as.Date(budget$date, format = "%Y-%m-%d")
 ```
+
+Add a month column to sort by month
 ```{r process}
-expenditure <- expenditure %>% mutate(month = month(TRANSDATE))
+expenditure <- expenditure %>% mutate(month = month(TRANSDATE , label = TRUE))
 ##expenditure$month <- as.Date(paste0("2018-", expenditure$month,"-01"),"%Y-%m-%d")
-
-str(expenditure)
+budget <- budget %>% mutate(month = month(date, label = TRUE))
 ```
+
+create new tables with the different groups of interest
+
 ```{r mutate}
 
-Sumpayment <- expenditure %>% group_by(month,District,SOE_description)%>%summarise(Total = sum(NETPAYMENT, na.rm = TRUE))
+## expenditure data grouped by month and netpayment
+Sumpayment <- expenditure %>% group_by(month)%>%summarise(Total = sum(NETPAYMENT, na.rm = TRUE))
+
+##budget data grouped by month and revised and sanctioned amounts
+BudgetSum <- budget %>% group_by(month) %>% summarise_at(c("REVISED","SANCTION"), sum, na.rm = TRUE)
+
+
+BudgetSum.long <- melt(BudgetSum, id = "month", measure = c("REVISED","SANCTION"))
+
+## budget data grouped by medical budget for  revised and sanctioned
+medical_budget <- medical_budget <- budget %>% group_by(month) %>% filter(major == 2210) %>% summarise_at(c("REVISED","SANCTION"), sum, na.rm = TRUE)
+
+medical_budget.long <- melt(medical_budget, id = "month", measure = c("REVISED","SANCTION"))
+
+##medical budget
+medical_budget_type <-subset(budget, major == 2210)
+
+## plot of total expenditure monthly for state
+
+plot1 <- ggplot (data = Sumpayment, aes(x = month, y=Total, group = 1)) + geom_line(color = "red", size=1)+scale_y_continuous(labels = scales::comma)
+
+print (plot1)
+
+##plot of monthly budget data
+
+plot2a <- ggplot (data = BudgetSum, aes(x = month, y=REVISED, group = 1)) + geom_line(color = "blue", size=1)+scale_y_continuous(labels = scales::comma)
+
+print (plot2a)
+
+plot2 <- ggplot(data = BudgetSum.long, aes(x= month,y=value,color = variable, group = 1))+ geom_line(size = 1)+ scale_y_continuous(labels = scales::comma)
+
+print(plot2)
+
+##plot of budget and expenditure data
+plot3 <- ggplot() + geom_line(data = Sumpayment, aes(x = month, y=Total, group = 1), color = "red", size =1)+ geom_line(data = BudgetSum, aes(x= month,y=REVISED, group = 1), color = "blue", size =1) +  scale_y_continuous(labels = scales::comma)
+
+print(plot3)
+
+##plot of monthly medical budget estimates (revised and sanctioned)
+plot4a <- ggplot(data = medical_budget.long, aes(x= month,y=value,color = variable, group = 1))+ geom_line(size = 1)+ scale_y_continuous(labels = scales::comma)
+
+print(plot4a)
+
+plot4 <- ggplot(data = medical_budget.long, aes(x= month,y=value,color = variable, group = 1))+ geom_line(size = 1)+ scale_y_continuous(labels = scales::comma)
+
+print(plot4)
+```
+
+## Districtwise Spending 
+
+There are supposed to be 12 districts in Himachal. There is a lot more data here. 
+
+```{r district}
+
+Districtspend <- expenditure %>% group_by(District)%>%summarise(Total = sum(NETPAYMENT, na.rm = TRUE))
+
+
+
+##total expenditure monthly per district
 
 barplot <- ggplot(Sumpayment, aes(month, Total, group = Sumpayment$District))+geom_line(stat="identity", width = 1)+facet_wrap(~ Sumpayment$District)
 
 barplot
-```
-Sumpayment_AMB <- subset(Sumpayment, District =="AMB")
 
-Sumpayment_AMB_SOE <- Sumpayment_AMB %>% group_by(SOE_description)%>%summarise(Total = sum(Total, na.rm = TRUE))
+##pie chart with district wise spending
 
-Sumpayment_AMB %>% ggplot(aes(x=month,y=Total))+ geom_bar(stat="identity")
+barplot <- ggplot(subset(Sumpayment, District == "AMB"), aes(x="",y = Total, fill = SOE_description))+geom_bar(stat="identity", width = 1)
 
-barplot <- ggplot(Sumpayment_AMB_SOE, aes(x="",y = Total, fill = SOE_description))+geom_bar(stat="identity", width = 1)
-```
 pie <- barplot + coord_polar("y", start=0)
 
 pie
 
 ```
 
+##not clean
+
+
+
             
-## Including Plots
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
