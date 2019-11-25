@@ -17,6 +17,7 @@ library(ggplot2)
 library(dplyr)
 library(scales)
 library(reshape2)
+library(cowplot)
 ```
 
 Download file and read it
@@ -64,7 +65,9 @@ budget$SanctionedLakh <- budget$SANCTION * 100000
 ```{r month_year}
 ## expenditure data grouped by month and netpayment
 
-Sumpayment <- expenditure %>% mutate(month_year = format(TRANSDATE, "%Y-%m")) %>% group_by(month_year) %>% summarise(total = sum(NETPAYMENT, na.rm = TRUE))
+expenditure <- expenditure %>% mutate(month_year = format(TRANSDATE, "%Y-%m")) 
+
+Sumpayment <- expenditure %>% group_by(month_year) %>% summarise(total = sum(NETPAYMENT, na.rm = TRUE))
 
 BudgetSum <- budget %>% mutate(month_year = format(date, "%Y-%m")) %>%
 group_by(month_year) %>% summarise_at(c("Revisedlakh","SanctionedLakh"), sum, na.rm = TRUE)
@@ -132,19 +135,90 @@ print (plot5)
 
 ```
 
-For plot 1: January and march seem to have higher values than the other months, we can subset that data to see if we can figure out what is causing this
+For plot 1: January and march seem to have higher values than the other months, we can subset that data to see why
 
 ```{r subset_months}
 
-expenditure_jan <- expenditure[expenditure$TRANSDATE >= "2018-01-01" & expenditure$TRANSDATE >= "2018-01-31",]
 
+expenditure_jan_2018 <- filter(expenditure,expenditure$TRANSDATE >= "2018-01-01" & expenditure$TRANSDATE <= "2018-01-31")
+expenditure_jan_2019 <- filter(expenditure,expenditure$TRANSDATE >= "2019-01-01" & expenditure$TRANSDATE <= "2019-01-31")
+expenditure_mar_2018<- filter(expenditure,expenditure$TRANSDATE >= "2018-03-01" & expenditure$TRANSDATE <= "2018-03-31")
+expenditure_mar_2019 <- filter(expenditure,expenditure$TRANSDATE >= "2019-03-01" & expenditure$TRANSDATE <= "2019-03-31")
+
+expenditure_jan_2018 <-  expenditure_jan_2018 %>% group_by(SOE_description) %>% summarise(total = sum(NETPAYMENT, na.rm = TRUE))
+expenditure_jan_2019 <-  expenditure_jan_2019 %>% group_by(SOE_description) %>% summarise(total = sum(NETPAYMENT, na.rm = TRUE))
+
+expenditure_mar_2018 <-  expenditure_mar_2018 %>% group_by(SOE_description) %>% summarise(total = sum(NETPAYMENT, na.rm = TRUE))
+expenditure_mar_2019 <-  expenditure_mar_2019 %>% group_by(SOE_description) %>% summarise(total = sum(NETPAYMENT, na.rm = TRUE))
+##expenditure_mar <- expenditure[expenditure$TRANSDATE >= "2018-03-01" & expenditure$TRANSDATE >= "2018-03-31",]
+
+hist1 <- ggplot(data = expenditure_jan_2018, aes(x = SOE_description,y=total))+  
+  geom_bar(stat = "identity", color = "red")+ 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))+ 
+  scale_y_continuous(labels = scales::comma)+
+  ggtitle("January 2018 Expenditure") +
+  xlab("SOE Description") + ylab("payment in Rs")
+
+
+
+hist2 <- ggplot(data = expenditure_jan_2019, aes(x = SOE_description,y=total))+  
+  geom_bar(stat = "identity", color = "red")+ 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))+ 
+  scale_y_continuous(labels = scales::comma)+
+  ggtitle("Jan2019 Expenditure") +
+  xlab("SOE Description") + ylab("payment in Rs")
+
+print (hist1)
+
+print(hist2)
+
+
+hist3 <- ggplot(data = expenditure_mar_2018, aes(x = SOE_description,y=total))+  
+  geom_bar(stat = "identity", color = "red")+ 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))+ 
+  scale_y_continuous(labels = scales::comma)+
+  ggtitle("mar 2018 Expenditure") +
+  xlab("SOE Description") + ylab("payment in Rs")
+
+
+
+hist4 <- ggplot(data = expenditure_mar_2019, aes(x = SOE_description,y=total))+  
+  geom_bar(stat = "identity", color = "red")+ 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))+ 
+  scale_y_continuous(labels = scales::comma)+
+  ggtitle("mar 2019 Expenditure") +
+  xlab("SOE Description") + ylab("payment in Rs")
+
+print (hist3)
+
+print(hist4)
 ```
+It looks it is mainly accounted by salaries and pensions for the month of jannuary and by misc? for March
+
+Now we can look at districtwise spending
 
 
 
 ## Districtwise Spending 
 
 There are supposed to be 12 districts in Himachal. There is a lot more data here. 
+
+Maybe by subsetting the treasury code letters of the alphabet we may come across some semblance of district wise spend
+
+```{r subset_district}
+expenditure$District_code <- substr(expenditure$Treasury_Code,1,3)
+
+expenditure_district <-  expenditure %>% group_by(District_code) %>% summarise(total = sum(NETPAYMENT, na.rm = TRUE))
+
+hist_dist <- ggplot(data = expenditure_district , aes(x = District_code,y=total))+  
+  geom_bar(stat = "identity", color = "red")+ 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))+ 
+  scale_y_continuous(labels = scales::comma)+
+  ggtitle("District wise expenditure") +
+  xlab("district") + ylab("payment in Rs")
+
+print(hist_dist)
+```
 
 ## data that is not working yet
 
