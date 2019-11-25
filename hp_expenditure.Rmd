@@ -98,7 +98,7 @@ medical_budget.long <- melt(medical_budget_month, id = "month_year", measure = c
 ```
 
 
-```{r mutate}
+```{r plots}
 
 ## plot of total expenditure monthly for state
 
@@ -219,6 +219,9 @@ hist_dist <- ggplot(data = expenditure_district , aes(x = District_code,y=total)
 
 print(hist_dist)
 ```
+
+
+
 
 ## data that is not working yet
 
