@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 Loaded the required packages
 
-```{r load package, results='hide',message=FALSE,error=FALSE}
+```{r load packages, results='hide',message=FALSE,error=FALSE}
 library(googledrive)
 library(lubridate)
 library(ggplot2)
@@ -27,71 +27,120 @@ dl <- drive_download(
   as_id("https://drive.google.com/open?id=1dyKTsCDegBCDDBDVJRJAf_JIUxd8YcET"), path = temp, overwrite = TRUE)
 out <- unzip(temp, exdir = tempdir())
 expenditure <- read.csv(out, header = TRUE, stringsAsFactors = FALSE)
+unlink(temp)
 
 budget <- read.csv("hoa_wise_prep_data.csv", header = TRUE, stringsAsFactors = FALSE)
 ```
+I cannot seem to download and extract the budget file from the drive through R so I have downloaded it and saved it locally
+
+##temp <- tempfile(fileext = ".zip")
+##dl <- drive_download(
+  as_id("https://drive.google.com/open?id=1LQNEV3vQDI3nkofVwADHrTZdPIh29oAg"), path = temp, overwrite = TRUE)
+##out1 <- unzip(temp, exdir = tempdir())
+##budget <- read.csv(out1, header = TRUE, stringsAsFactors = FALSE)
+
+Convert the format of the date from factor to date format
 
 ```{r time, results='hide',message=FALSE,error=FALSE}
 ## change date format
+
 expenditure$TRANSDATE <- as.Date(expenditure$TRANSDATE, format = "%Y-%m-%d")
 budget$date <- as.Date(budget$date, format = "%Y-%m-%d")
 ```
 
-Add a month column to sort by month
+Add a month_year column to sort by month_year
+
+
+## I am going to assume that the revised and sanctioned data is in 100000's and do the following. 
+
 ```{r process}
-expenditure <- expenditure %>% mutate(month = month(TRANSDATE , label = TRUE))
-##expenditure$month <- as.Date(paste0("2018-", expenditure$month,"-01"),"%Y-%m-%d")
-budget <- budget %>% mutate(month = month(date, label = TRUE))
+budget$Revisedlakh <- budget$REVISED *100000
+budget$SanctionedLakh <- budget$SANCTION * 100000
+
 ```
 
-create new tables with the different groups of interest
+##budget and expenditure data is then grouped by month_year
+
+```{r month_year}
+## expenditure data grouped by month and netpayment
+
+Sumpayment <- expenditure %>% mutate(month_year = format(TRANSDATE, "%Y-%m")) %>% group_by(month_year) %>% summarise(total = sum(NETPAYMENT, na.rm = TRUE))
+
+BudgetSum <- budget %>% mutate(month_year = format(date, "%Y-%m")) %>%
+group_by(month_year) %>% summarise_at(c("Revisedlakh","SanctionedLakh"), sum, na.rm = TRUE)
+
+## budget data grouped by medical budget
+medical_budget <- budget %>% mutate(month_year = format(date, "%Y-%m")) %>%
+group_by(month_year) %>% filter(major == 2210) 
+
+medical_budget_month <- budget %>% mutate(month_year = format(date, "%Y-%m")) %>%
+group_by(month_year) %>% filter(major == 2210) %>% summarise_at(c("Revisedlakh","SanctionedLakh"), sum, na.rm = TRUE)
+
+medical_exp_distric <- expenditure %>% mutate(month_year = format(TRANSDATE, "%Y-%m")) %>%
+group_by(month_year) %>% filter(major == 2210) 
+
+medical_expenditure <- expenditure %>% mutate(month_year = format(TRANSDATE, "%Y-%m")) %>% group_by(month_year) %>%
+filter(major == 2210) %>% summarise(total = sum(NETPAYMENT, na.rm = TRUE))
+
+
+```
+
+Melt the data so we can visualize the revised and sanctioned estimates as variables
 
 ```{r mutate}
 
-## expenditure data grouped by month and netpayment
-Sumpayment <- expenditure %>% group_by(month)%>%summarise(Total = sum(NETPAYMENT, na.rm = TRUE))
+BudgetSum.long <- melt(BudgetSum, id = "month_year", measure = c("Revisedlakh","SanctionedLakh"))
 
-##budget data grouped by month and revised and sanctioned amounts
-BudgetSum <- budget %>% group_by(month) %>% summarise_at(c("REVISED","SANCTION"), sum, na.rm = TRUE)
+medical_budget.long <- melt(medical_budget_month, id = "month_year", measure = c("Revisedlakh","SanctionedLakh"))
+```
 
 
-BudgetSum.long <- melt(BudgetSum, id = "month", measure = c("REVISED","SANCTION"))
-
-## budget data grouped by medical budget for  revised and sanctioned
-medical_budget <- medical_budget <- budget %>% group_by(month) %>% filter(major == 2210) %>% summarise_at(c("REVISED","SANCTION"), sum, na.rm = TRUE)
-
-medical_budget.long <- melt(medical_budget, id = "month", measure = c("REVISED","SANCTION"))
-
-##medical budget
-medical_budget_type <-subset(budget, major == 2210)
+```{r mutate}
 
 ## plot of total expenditure monthly for state
 
-plot1 <- ggplot (data = Sumpayment, aes(x = month, y=Total, group = 1)) + geom_line(color = "red", size=1)+scale_y_continuous(labels = scales::comma)
+plot1 <- ggplot (data = Sumpayment, aes(x = month_year, y=total, group = 1)) + geom_line(color = "red", size=1)+ geom_point(size=3)+scale_y_continuous(labels = scales::comma)+theme (axis.text.x = element_text(angle = 90, hjust = 1))+ ggtitle("Plot of  monthly netpayment over 2018-2019 in HP") + xlab("time(month-year)") + ylab("payment in Rs")
 
 print (plot1)
 
 ##plot of monthly budget data
 
-plot2a <- ggplot (data = BudgetSum, aes(x = month, y=REVISED, group = 1)) + geom_line(color = "blue", size=1)+scale_y_continuous(labels = scales::comma)
+plot2a <- ggplot (data = BudgetSum.long,aes(x = month_year, y=value, color = variable, group = variable)) + geom_line(size=1)+ geom_point(size=3)+scale_y_continuous(labels = scales::comma)+ theme(axis.text.x = element_text(angle = 90, hjust = 1))+ ggtitle("Plot of monthly budget (Revised & Sanctioned) over 2018-2019 in HP") + xlab("time(month-year)") + ylab("payment in Rs")
 
 print (plot2a)
 
-plot2 <- ggplot(data = BudgetSum.long, aes(x= month,y=value,color = variable, group = 1))+ geom_line(size = 1)+ scale_y_continuous(labels = scales::comma)
-
-print(plot2)
-
 ##plot of budget and expenditure data
-plot3 <- ggplot() + geom_line(data = Sumpayment, aes(x = month, y=Total, group = 1), color = "red", size =1)+ geom_line(data = BudgetSum, aes(x= month,y=REVISED, group = 1), color = "blue", size =1) +  scale_y_continuous(labels = scales::comma)
+
+plot3 <- ggplot() + geom_line(data = Sumpayment, aes(x = month_year, y=total, group = 1), color = "red", size =1)+ geom_point(size = 3)+ 
+  geom_line(data = BudgetSum.long, aes(x= month_year,y=value,colour = variable, group = variable),size =1) + 
+geom_point(size=3)+
+  scale_y_continuous(labels = scales::comma)+
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))+ 
+  ggtitle("Plot of monthly budget (Revised & Sanctioned) & expenditure over 2018-2019 in HP") + xlab("time(month-year)") + ylab("payment in Rs")
 
 print(plot3)
 
 ##plot of monthly medical budget estimates (revised and sanctioned)
-plot4a <- ggplot(data = medical_budget.long, aes(x= month,y=value,color = variable, group = 1))+ geom_line(size = 1)+ scale_y_continuous(labels = scales::comma)
+plot4a <- ggplot(data = medical_budget.long, aes(x= month_year, y=value, color=variable, group = variable))+ geom_line(size = 1)+ scale_y_continuous(labels = scales::comma)+ geom_point(size=3)+ theme(axis.text.x = element_text(angle = 90, hjust = 1))+ ggtitle("Plot of monthly medical budget (Revised & Sanctioned) over 2018-2019 in HP") + xlab("time(month-year)") + ylab("payment in Rs")
 
 print(plot4a)
 
+##plot of monthly medical expenditures
+plot5 <- ggplot (data = medical_expenditure, aes(x = month_year, y=total, group = 1)) + geom_line(color = "red", size=1)+ geom_point(size=3)+scale_y_continuous(labels = scales::comma)+theme (axis.text.x = element_text(angle = 90, hjust = 1))+ ggtitle("Plot of  monthly medical expenditure over 2018-2019 in HP") + xlab("time(month-year)") + ylab("payment in Rs")
+
+print (plot5)
+
 ```
+
+For plot 1: January and march seem to have higher values than the other months, we can subset that data to see if we can figure out what is causing this
+
+```{r subset_months}
+
+expenditure_jan <- expenditure[expenditure$TRANSDATE >= "2018-01-01" & expenditure$TRANSDATE >= "2018-01-31",]
+
+```
+
+
 
 ## Districtwise Spending 
 
