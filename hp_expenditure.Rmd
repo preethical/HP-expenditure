@@ -46,18 +46,8 @@ Convert the format of the date from factor to date format
 ## change date format
 
 expenditure$TRANSDATE <- as.Date(expenditure$TRANSDATE, format = "%Y-%m-%d")
+
 budget$date <- as.Date(budget$date, format = "%Y-%m-%d")
-```
-
-Add a month_year column to sort by month_year
-
-
-## I am going to assume that the revised and sanctioned data is in 100000's and do the following. 
-
-```{r process}
-budget$Revisedlakh <- budget$REVISED *100000
-budget$SanctionedLakh <- budget$SANCTION * 100000
-
 ```
 
 ##budget and expenditure data is then grouped by month_year
@@ -70,17 +60,26 @@ expenditure <- expenditure %>% mutate(month_year = format(TRANSDATE, "%Y-%m"))
 Sumpayment <- expenditure %>% group_by(month_year) %>% summarise(total = sum(NETPAYMENT, na.rm = TRUE))
 
 BudgetSum <- budget %>% mutate(month_year = format(date, "%Y-%m")) %>%
-group_by(month_year) %>% summarise_at(c("Revisedlakh","SanctionedLakh"), sum, na.rm = TRUE)
+group_by(month_year) %>% summarise_at(c("REVISED","SANCTION"), sum, na.rm = TRUE)
+
+## Data grouped by district
+
+expenditure$District_code <- substr(expenditure$Treasury_Code,1,3)
+
+expenditure_district <-  expenditure %>% group_by(District_code) %>% summarise(total = sum(NETPAYMENT, na.rm = TRUE))
+
+expenditure_district_month <- expenditure %>% group_by(District_code, month_year) %>% summarise(total = sum(NETPAYMENT, na.rm = TRUE))
 
 ## budget data grouped by medical budget
+
 medical_budget <- budget %>% mutate(month_year = format(date, "%Y-%m")) %>%
 group_by(month_year) %>% filter(major == 2210) 
 
 medical_budget_month <- budget %>% mutate(month_year = format(date, "%Y-%m")) %>%
-group_by(month_year) %>% filter(major == 2210) %>% summarise_at(c("Revisedlakh","SanctionedLakh"), sum, na.rm = TRUE)
+group_by(month_year) %>% filter(major == 2210) %>% summarise_at(c("REVISED","SANCTION"), sum, na.rm = TRUE)
 
-medical_exp_distric <- expenditure %>% mutate(month_year = format(TRANSDATE, "%Y-%m")) %>%
-group_by(month_year) %>% filter(major == 2210) 
+medical_exp_district <- expenditure %>% mutate(month_year = format(TRANSDATE, "%Y-%m")) %>%
+group_by(District_code, month_year) %>% filter(major == 2210) %>% summarise(total = sum(NETPAYMENT, na.rm = TRUE))
 
 medical_expenditure <- expenditure %>% mutate(month_year = format(TRANSDATE, "%Y-%m")) %>% group_by(month_year) %>%
 filter(major == 2210) %>% summarise(total = sum(NETPAYMENT, na.rm = TRUE))
@@ -92,9 +91,9 @@ Melt the data so we can visualize the revised and sanctioned estimates as variab
 
 ```{r mutate}
 
-BudgetSum.long <- melt(BudgetSum, id = "month_year", measure = c("Revisedlakh","SanctionedLakh"))
+BudgetSum.long <- melt(BudgetSum, id = "month_year", measure = c("REVISED","SANCTION"))
 
-medical_budget.long <- melt(medical_budget_month, id = "month_year", measure = c("Revisedlakh","SanctionedLakh"))
+medical_budget.long <- melt(medical_budget_month, id = "month_year", measure = c("REVISED","SANCTION"))
 ```
 
 
@@ -112,17 +111,6 @@ plot2a <- ggplot (data = BudgetSum.long,aes(x = month_year, y=value, color = var
 
 print (plot2a)
 
-##plot of budget and expenditure data
-
-plot3 <- ggplot() + geom_line(data = Sumpayment, aes(x = month_year, y=total, group = 1), color = "red", size =1)+ geom_point(size = 3)+ 
-  geom_line(data = BudgetSum.long, aes(x= month_year,y=value,colour = variable, group = variable),size =1) + 
-geom_point(size=3)+
-  scale_y_continuous(labels = scales::comma)+
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))+ 
-  ggtitle("Plot of monthly budget (Revised & Sanctioned) & expenditure over 2018-2019 in HP") + xlab("time(month-year)") + ylab("payment in Rs")
-
-print(plot3)
-
 ##plot of monthly medical budget estimates (revised and sanctioned)
 plot4a <- ggplot(data = medical_budget.long, aes(x= month_year, y=value, color=variable, group = variable))+ geom_line(size = 1)+ scale_y_continuous(labels = scales::comma)+ geom_point(size=3)+ theme(axis.text.x = element_text(angle = 90, hjust = 1))+ ggtitle("Plot of monthly medical budget (Revised & Sanctioned) over 2018-2019 in HP") + xlab("time(month-year)") + ylab("payment in Rs")
 
@@ -134,6 +122,13 @@ plot5 <- ggplot (data = medical_expenditure, aes(x = month_year, y=total, group 
 print (plot5)
 
 ```
+
+Calculate medical expenditure as a percentage of total expenditure (monthly plot)
+
+Calculate medical expenditure in different districts and present that as a percentage of total expenditure for districts
+
+Look up number of hospitals per district
+
 
 For plot 1: January and march seem to have higher values than the other months, we can subset that data to see why
 
@@ -206,9 +201,6 @@ There are supposed to be 12 districts in Himachal. There is a lot more data here
 Maybe by subsetting the treasury code letters of the alphabet we may come across some semblance of district wise spend
 
 ```{r subset_district}
-expenditure$District_code <- substr(expenditure$Treasury_Code,1,3)
-
-expenditure_district <-  expenditure %>% group_by(District_code) %>% summarise(total = sum(NETPAYMENT, na.rm = TRUE))
 
 hist_dist <- ggplot(data = expenditure_district , aes(x = District_code,y=total))+  
   geom_bar(stat = "identity", color = "red")+ 
@@ -218,6 +210,27 @@ hist_dist <- ggplot(data = expenditure_district , aes(x = District_code,y=total)
   xlab("district") + ylab("payment in Rs")
 
 print(hist_dist)
+
+hist_dist <- ggplot(data = medical_exp_district, aes(x = District_code,y=total))+  
+  geom_bar(stat = "identity", color = "red")+ 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))+ 
+  scale_y_continuous(labels = scales::comma)+
+  ggtitle("District wise expenditure") +
+  xlab("district") + ylab("payment in Rs")
+
+print(hist_dist)
+
+
+plot5 <- ggplot (data = expenditure_district_month, aes(x = month_year, y=total, group = District_code, color = District_code)) + geom_line(size=1)+ geom_point(size=3)+scale_y_continuous(labels = scales::comma)+theme (axis.text.x = element_text(angle = 90, hjust = 1))+ ggtitle("Plot of districtwise expenditure over 2018-2019 in HP") + xlab("time(month-year)") + ylab("payment in Rs")
+
+print (plot5)
+
+
+plot6 <- ggplot (data = medical_exp_district, aes(x = month_year, y=total, group = District_code, color = District_code)) + geom_line(size=1)+ geom_point(size=3)+scale_y_continuous(labels = scales::comma)+theme (axis.text.x = element_text(angle = 90, hjust = 1))+ ggtitle("Plot of  medical expenditure district-wise 2018-2019 in HP") + xlab("time(month-year)") + ylab("payment in Rs")
+
+print (plot6)
+
+
 ```
 
 
