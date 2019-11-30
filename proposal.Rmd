@@ -1,0 +1,168 @@
+---
+title: "Proposal-1"
+author: "preethi"
+date: "11/29/2019"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+ ## Comparison of trends in Himachal Pradesh's Public Health Expenditure with trends in Public health infrasatructure and health indicators
+
+## background / introduction
+
+[Add more information a) why public health spending iss a good metric to look at for the health of a state
+b)more demographic information about Himachal
+b) more Public health spending in Himachal]
+
+ ##why public health spending iss a good metric to look at for the health of a state-
+ 
+ 
+ ##demographic information about Himachal
+Himachal Pradesh is a Northern Himalayan state which extends over 55,673 km² with 99.51% of being Rural.  It has a projected population of 74.35 Lakhs and about 90% of the population is Rural. 
+
+ ##More Public health spending in Himachal
+The state is known for its public health spending at about 3,522 rs per capita, one of the highest in India. Public health expenditure in 2018-2019 accounted for 3.6% of total expenditure and District-wise public health expenditure mirrored this (Check).
+Himachal Pradesh also shown an increase in the number of functioning PHCs, Sub Centres and CHC's with time. But does this increase translate to Indicators of Health. 
+The aim of this study would be to map trends in Public Health Expenditure data and compare it with changes in Public Health Infrastructure and estimators of health over time. 
+
+The study would give interesting information hopefully toward shaping more useful and efficient health policy
+Add more information based on - 
+  - What is your research area
+  - the motivation of research
+  - how important is it for knowledge advancement?
+
+problem statement
+  - What is the specific problem in that research area addressed
+Is the public health expenditure in Himachal Pradesh translating into actual improvements in Public Health Infrastructure and Health Indicators
+
+objectives
+
+This study aims to look at three different sources of data and collate information regarding in public health expenditure spending with changes in Public health infrastructure and Public health outcomes. 
+
+
+Methodology 
+
+This study will be consolidating time series data from three different sources to look for changes with time and associations between them 
+
+We will look at the state budget data especially public health expenditures over time, Rural Health statistics data for changes in Rural Health Infrastructre with time and changes in public health expenditure and lastly we will see trends in health public indicators over time and with changes in public health expenditure. 
+
+We will use the following sources
+
+## State Budget Data
+
+- To observe (state-wide and district-specific) changes in Public health expenditure over time 
+as well as changes in the component-wise break up of public health expenditure over time (including toward Public Health Care centres and salaries)
+
+- The public health expenditure can be calculated as follows
+
+  -In the case of health expenditure, the relevant Major Heads are 2210 – Revenue Expenditure on Medical and Public Health, 2211 - Revenue Expenditure on Family Welfare, 4210 - Capital Expenditure on Medical and Public Health and 4211- Capital Expenditure on Family Welfare
+
+## Rural Health Statistics Data
+
+- This data is collected by the Ministry of Health and Family Welfare and put out by the National Health Mission(NHM) every year from 2005 till 2018.
+
+- To track trends in Rural Health Statistics infrastructure  as a factor of time and changes in public health expenditures (numbers of PHCs, CHCs, Sub-centres as well as personel and hospital standards). 
+This data is not available in a district-wise manner for most years.
+
+- A prelimnary look at this data suggests that while numbers of PHC's, CHC's and Sub-Centres have increased. There is a need for Health Workers with vacancies and shortfalls in various cases.
+
+## National Family Health Survey
+
+- This is a large-scale, multi-round survey conducted in a representative sample of households throughout India. This is also conducted by the Ministry of Health and Family Welfare
+
+- There are four surveys available at the moment with data available from 1992-2015
+
+- The latest survey NFHS 2014 outlines 114 health outcome indicators This study will focus on the relationship between some of the health outcome indicators (specifically vaccination, Infant Mortality, Life Expectancy) from NFHS-3,NFHS-4 and NFHS-5(to be released in January) with corresponding changes in public health expenditures.
+
+- Just a prelimnary look at this data shows that while Himachal Pradesh performs well on some of these indicators, vaccination rates have decreased steadily since 2005 compared to the years before that. 
+
+- One of the outcomes of this data analysis could be to consolidate data from these data sets to arrive at possible reasons for this decrease in vaccination rates
+
+...
+
+
+## preliminary research review
+
+  - a summary of previous related research on the research problem
+  - ...their strength and weakness
+  - justification of your research
+    - What is known/what have been done by others?
+    - And, why your research is still necessary?
+
+methodology
+  - define research methods and logic steps
+  - what to do and how to solve the problem and achieve proposed objectives?
+  - which research methods (e.g. survey, modeling, case study ...) will be used?
+  - attach a project schedule table, if necessary.
+
+references
+  - All factual material that is not original
+
+
+2. unifr.ch: https://diuf.unifr.ch/main/is/sites/diuf.unifr.ch.main.is/files/Proposal_Template.doc
+
+2 (A) outline:
+
+•	Title
+•	Brief Introduction
+•	Background and statement of the problem (this in the light of a thorough literature review)
+•	Research question or hypothesis, aim and objectives
+•	Study design (type of study)
+•	Study population and sampling
+•	Data collection methods and instruments
+•	Data analysis methods – if applicable statistical planning must be fully addressed, or the candidate should provide evidence that statistics are not required.
+•	Mechanisms to assure the quality of the study – e.g. control of bias, safe storage of data
+•	Study period - Timetable for completion of the project
+•	Participants in the study – all people involved in the study, and the role they play, should be identified.*
+•	Ethical considerations
+•	Resources required for the study, including budget if applicable
+•	References
+•	Appendices (copy of questionnaire, consent forms, etc.)
+
+2 (B) table of contents:
+
+ABSTRACT
+INTRODUCTION
+PROBLEM STATEMENT
+  - OVERVIEW
+  - RESEARCH QUESTION/HYPOTHESIS
+OBJECTIVES AND AIMS
+  - OVERALL OBJECTIVE
+  - SPECIFIC AIMS
+BACKGROUND AND SIGNIFICANCE
+RESEARCH DESIGN AND METHODS
+  - OVERVIEW
+  - POPULATION AND STUDY SAMPLE
+  - SAMPLE SIZE AND SELECTION OF SAMPLE
+  - SOURCES OF DATA
+  - COLLECTION OF DATA
+  - EXPOSURE ASSESSMENT
+  - DATA MANAGEMENT
+  - DATA ANALYSIS STRATEGIES
+  - ETHICS AND HUMAN SUBJECTS ISSUES
+  - TIMEFRAMES
+STRENGTHS AND WEAKNESSES OF THE STUDY
+PUBLIC HEALTH SIGNIFICANCE
+BUDGET AND MOTIVATION
+REFERENCES
+APPENDICES
+  - APPENDIX 1: QUESTIONNAIRE
+  - APPENDIX 2: PATIENT LIST
+
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

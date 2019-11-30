@@ -79,12 +79,12 @@ medical_budget_month <- budget %>% mutate(month_year = format(date, "%Y-%m")) %>
 group_by(month_year) %>% filter(major == 2210) %>% summarise_at(c("REVISED","SANCTION"), sum, na.rm = TRUE)
 
 medical_exp_district <- expenditure %>% mutate(month_year = format(TRANSDATE, "%Y-%m")) %>%
-group_by(District_code, month_year) %>% filter(major == 2210) %>% summarise(total = sum(NETPAYMENT, na.rm = TRUE))
+group_by(District_code, month_year) %>% filter(major == 2210,2211,4210,4211) %>% summarise(total = sum(NETPAYMENT, na.rm = TRUE))
 
 medical_expenditure <- expenditure %>% mutate(month_year = format(TRANSDATE, "%Y-%m")) %>% group_by(month_year) %>%
-filter(major == 2210) %>% summarise(total = sum(NETPAYMENT, na.rm = TRUE))
+filter(major == 2210,2211,4210,4211) %>% summarise(total = sum(NETPAYMENT, na.rm = TRUE))
 
-
+sum(medical_expenditure$total)/sum(expenditure$NETPAYMENT)*100
 ```
 
 Melt the data so we can visualize the revised and sanctioned estimates as variables
