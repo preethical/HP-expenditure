@@ -18,6 +18,7 @@ library(dplyr)
 library(scales)
 library(reshape2)
 library(cowplot)
+
 ```
 
 Download file and read it
@@ -31,6 +32,8 @@ expenditure <- read.csv(out, header = TRUE, stringsAsFactors = FALSE)
 unlink(temp)
 
 budget <- read.csv("hoa_wise_prep_data.csv", header = TRUE, stringsAsFactors = FALSE)
+
+district_exp <- read.csv("districtwise_spend.csv", header = TRUE)
 ```
 I cannot seem to download and extract the budget file from the drive through R so I have downloaded it and saved it locally
 
@@ -49,6 +52,8 @@ expenditure$TRANSDATE <- as.Date(expenditure$TRANSDATE, format = "%Y-%m-%d")
 
 budget$date <- as.Date(budget$date, format = "%Y-%m-%d")
 ```
+
+
 
 ##budget and expenditure data is then grouped by month_year
 
@@ -84,6 +89,10 @@ group_by(District_code, month_year) %>% filter(major == 2210,2211,4210,4211) %>%
 medical_expenditure <- expenditure %>% mutate(month_year = format(TRANSDATE, "%Y-%m")) %>% group_by(month_year) %>%
 filter(major == 2210,2211,4210,4211) %>% summarise(total = sum(NETPAYMENT, na.rm = TRUE))
 
+medical_exp_district_1 <- expenditure %>% mutate(month_year = format(TRANSDATE, "%Y-%m")) %>%
+group_by(District_code) %>% filter(major == 2210,2211,4210,4211) %>% summarise(total = sum(NETPAYMENT, na.rm = TRUE))
+
+
 sum(medical_expenditure$total)/sum(expenditure$NETPAYMENT)*100
 ```
 
@@ -101,9 +110,22 @@ medical_budget.long <- melt(medical_budget_month, id = "month_year", measure = c
 
 ## plot of total expenditure monthly for state
 
-plot1 <- ggplot (data = Sumpayment, aes(x = month_year, y=total, group = 1)) + geom_line(color = "red", size=1)+ geom_point(size=3)+scale_y_continuous(labels = scales::comma)+theme (axis.text.x = element_text(angle = 90, hjust = 1))+ ggtitle("Plot of  monthly netpayment over 2018-2019 in HP") + xlab("time(month-year)") + ylab("payment in Rs")
+district_exp$Pop <- district_exp$Population.os.district..in.2011. 
+
+district_exp$public_health_exp <- district_exp$Public.Expenditure.on.Health
+
+district_exp$district <- district_exp$ï..District
+
+district_exp$Pop <- as.numeric(district_exp$Pop)
+
+
+plot1 <- ggplot (data = district_exp, aes(x = public_health_exp, y=Number.of.PHCs, group = district, size=Pop))+ geom_point(alpha = 0.7)+ +scale_x_continuous(labels = scales::comma)+ scale_size(range = c(.1, 24), name="Population")+ theme (axis.text.x = element_text(angle = 90, hjust = 1))+ ggtitle("Plot of  Distric-wise public health expenditure and number of hospitals") + xlab("District wise expenditure in Rs") + ylab("Number of Primary Health Care Centres")
 
 print (plot1)
+
+plot1a <- ggplot (data = Sumpayment, aes(x = month_year, y=total, group = 1)) + geom_line(color = "red", size=1)+ geom_point(size=3)+scale_y_continuous(labels = scales::comma)+theme (axis.text.x = element_text(angle = 90, hjust = 1))+ ggtitle("Plot of  monthly netpayment over 2018-2019 in HP") + xlab("time(month-year)") + ylab("payment in Rs")
+
+print (plot1a)
 
 ##plot of monthly budget data
 
