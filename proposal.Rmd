@@ -79,7 +79,7 @@ and
 Here I have outlined the Total state expenditure for 2018-2019 and the Public health Component for 2018-2019. As well as the total state revised budget and the public health component for 2018-2019
 
 
-```{r state_budget_data, echo=FALSE}
+```{r state_budget_data, echo=FALSE, fig.width=12, fig.height=12}
 
 library(lubridate)
 library(ggplot2)
@@ -121,13 +121,13 @@ budget_medical_total_long <- melt(budget_medical_total, id = "month_year", measu
 expenditure_medical_total_long <- melt(expenditure_medical_total, id = "month_year", measure = c("Total_Monthly_exp","Medical_exp"))
 ##same as above
 
-plot1 <- ggplot (data = expenditure_medical_total_long,aes(x = month_year, y=value, color = variable, group = variable)) + geom_line(size=1)+ geom_point(size=3)+scale_y_continuous(labels = scales::comma)+ theme(axis.text.x = element_text(angle = 90, hjust = 1))+ ggtitle("Plot of monthly expenditure and public health expenditure in 2018-2019 in HP") + xlab("time(month-year)") + ylab("Expenditure in Rs")
+plot1 <- ggplot (data = expenditure_medical_total_long,aes(x = month_year, y=value, color = variable, group = variable)) + geom_line(size=1)+ geom_point(size=3)+scale_y_continuous(labels = scales::comma)+ theme(axis.text.x = element_text(angle = 90, hjust = 1))+ ggtitle("Plot of monthly expenditure and public health expenditure in 2018-2019") + xlab("time(month-year)") + ylab("Expenditure in Rs")
 
 print (plot1)
 
-plot2 <- ggplot (data = budget_medical_total_long,aes(x = month_year, y=value, color = variable, group = variable)) + geom_line(size=1)+ geom_point(size=3)+scale_y_continuous(labels = scales::comma)+ theme(axis.text.x = element_text(angle = 90, hjust = 1))+ ggtitle("Plot of monthly budget and public health budget (sanctioned and revised) in 2018-2019 in HP") + xlab("time(month-year)") + ylab("Budget in Rs")
+##plot2 <- ggplot (data = budget_medical_total_long,aes(x = month_year, y=value, color = variable, group = variable)) + geom_line(size=1)+ geom_point(size=3)+scale_y_continuous(labels = scales::comma)+ theme(axis.text.x = element_text(angle = 90, hjust = 1))+ ggtitle("Plot of monthly budget and public health budget (sanctioned and revised) in 2018-2019") + xlab("time(month-year)") + ylab("Budget in Rs")
 
-print (plot2)
+##print (plot2)
 
 ```
 
@@ -138,27 +138,31 @@ print (plot2)
 - It provides data of Rural Health Statistics. Rural Health Statistics data usually contains Infrastructural information and building positions of Sub Centres, Primary Health Centres (PHCs) and Community Health Centres (CHCs). It also contains state wise number of Sub Divisional Hospital, District Hospital & Mobile Medical Units. As well as state-wise information of Specialist Doctors, Health Workers, Auxiliary Mid wife Nurses (ANM), Nursing Staff, Health Assistants, Radiographers, Pharmacists. It includes information of staff in position, requirement of staffs and shortfall.
 
 - To track trends in Rural Health infrastructure as a factor of time and changes in public health expenditures (numbers of PHCs, CHCs, Sub-centres as well as personel and hospital standards). 
-This data may not be available in a district-wise manner for most years.
 
-```{r district_data, echo = FALSE}
+```{r district_data, echo = FALSE, fig.width=12, fig.height=12}
+
 district_exp <- read.csv("districtwise_spend.csv", header = TRUE)
 district_exp$district <- district_exp$ï..district
-district_exp$Population <- as.numeric(district_exp$Population)
+
 
 plot3 <- ggplot (data = district_exp, 
-                 aes(x = Public_Health_Expenditure,y=Number_PHC, group = district, size=Population))+
-                  geom_point(alpha = 0.7)+scale_x_continuous(labels = scales::comma)+ 
-                  scale_size(range = c(.1, 24), name="Population")+ 
-                  theme (axis.text.x = element_text(angle = 90, hjust = 1))+ 
-                  ggtitle("Plot of Distric-wise public health expenditure and number of hospitals") +
+                 aes(x = Public_Health_Expenditure,y=Number_PHC, fill = district, size=Population))+
+                  geom_point(alpha = 0.5, shape = 21)+scale_x_continuous(labels = scales::comma)+  
+                  scale_size(range = c(.1, 25), name="Population")+
+                  ggtitle("District-wise public health expenditure and number of hospitals") +
+                  theme_bw()+
                   xlab("District wise expenditure in Rs") + ylab("Number of Primary Health Care Centres")
 plot3
 ```
 
-(Show a district-wise graph for 2018 with public health expenditure in the x-axis,numbers of PHC's, Sub-centres and CHC's in x axis and population size as the ize of the circle)
+The above plot shows a district-wise distribution of hospitals plotted against public health expenditure for 2018-2019 (This size of the circles indicates the population of the district) 
 
 - We can also look at the other endpoints such as health care workers in these centres. 
 
+```{r health_care workers}
+
+
+```
 A prelimnary look at this data suggests that while numbers of PHC's, CHC's and Sub-Centres have increased, there maybe a need for Health Workers as the vacancies and shortfalls indicate. 
 
 (Show bar graphs of some infrastructure changes)
@@ -192,10 +196,7 @@ APPENDICES
   - APPENDIX 2: PATIENT LIST
 
 
-```{r cars}
-summary(cars)
-```
-
+`
 ## Including Plots
 
 You can also embed plots, for example:
