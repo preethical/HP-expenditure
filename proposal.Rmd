@@ -16,10 +16,10 @@ Alternate Proposal headings:
 
 ## Background / Introduction
 
-Healthcare expenditure is defined as the expenditures incurred during the provision of health services (preventive and curative), family planning activities, nutrition activities, and emergency aid designated for health (but does not include provision of water and sanitation).(World Bank,2013)
+Healthcare expenditure is defined as the expenditures incurred during the provision of health services (preventive and curative), family planning activities, nutrition activities, and emergency aid designated for health (but does not include provision of water and sanitation).[World Bank,2013](https://data.worldbank.org)
 The inference here is that there is a correlation between health expenditure and health outcomes.
 
-According to the WHO's 2018 report titled "Public spending on health"; A healthcare system that functions with high levels of government funding, generally provides better and more equitable access to services and better financial protection by reducing catastrophic spending.[WHO-Public spending on health,2018]
+According to the WHO's 2018 report titled "Public spending on health"; A healthcare system that functions with high levels of government funding, generally provides better and more equitable access to services and better financial protection by reducing catastrophic spending.[WHO-Public spending on health,2018](https://www.who.int/health_financing/documents/health-expenditure-report-2018/en/)
 
 While the link between public health expenditure and health outcomes is usually lagging, it is generally positive when expenditures are managed and executed efficiently.
 
