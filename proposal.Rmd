@@ -1,7 +1,7 @@
 ---
 title: "Proposal - The Impact of Himachal Pradesh's Public Health Expenditure on Health Outcomes"
-author: "preethi"
-date: "11/29/2019"
+author: "preethi govindarajan"
+date: "29/11/2019"
 output: pdf_document
 ---
 
