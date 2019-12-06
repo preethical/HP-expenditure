@@ -16,38 +16,37 @@ Alternate Proposal headings:
 
 ## Background / Introduction
 
-Healthcare expenditure is defined as the expenditures incurred during the provision of health services (preventive and curative), family planning activities, nutrition activities, and emergency aid designated for health (but does not include provision of water and sanitation).[World Bank,2013](https://data.worldbank.org)
+Healthcare expenditure is defined as the expenditures incurred during the provision of health services (preventive and curative), family planning activities, nutrition activities, and emergency aid designated for health (but does not include provision of water and sanitation)[1].  
 The inference here is that there is a correlation between health expenditure and health outcomes.
 
-According to the WHO's 2018 report titled "Public spending on health"; A healthcare system that functions with high levels of government funding, generally provides better and more equitable access to services and better financial protection by reducing catastrophic spending.[WHO-Public spending on health,2018](https://www.who.int/health_financing/documents/health-expenditure-report-2018/en/)
+According to the WHO's 2018 report titled "Public Spending on Health": A healthcare system that functions with high levels of government funding, generally provides better and more equitable access to services and better financial protection by reducing catastrophic spending [2].
 
-While the link between public health expenditure and health outcomes is usually lagging, it is generally positive when expenditures are managed and executed efficiently.
+While the link between public health expenditure and health outcomes is usually lagging, it is generally positive when expenditures are managed and executed efficiently.  
 
-The Indian Constitution charges the state with the task of "improvement of public health" and therefore most of the public health expenditure happens from within the state budgets. [Public Health Legislation in India , Part 1](http://www.ijcfm.org/article.asp?issn=2395-2113;year=2018;volume=4;issue=1;spage=10;epage=15;aulast=Sahoo;type=3)
+The Indian Constitution charges the state with the task of "improvement of public health" and therefore most of the public health expenditure happens from within the state budgets [3].  
 
-For the year 2015-2016 (according to the National Health Accout Estimates which were published in 2018),the Total Health Expenditure(THE) accounted for about 3.8% of the GDP at 5,28,484 crores, of which the Government Health Expenditure was 1,61,863 crores (1.18% of the total GDP) and accounting for about 30% of the THE. Of the Goverenment Health Expenditure, 64.4% was incurred by the state government. Household Out of Pocket expenditure was 64% of the THE. So even in 2016, the Government was still spending quite a small percentage on Public health and about 65% of that was from State budgets. [National Health Account Estimates,2018](https://mohfw.gov.in/sites/default/files/NHA_Estimates_Report_2015-16_0.pdf).These calculations were based on guidelines from the System of Health Account Estimates.[SHA-2011](https://www.oecd.org/health/health-systems/1841456.pdf)
+For the year 2015-2016 (according to the National Health Accout Estimates which were published in 2018),the Total Health Expenditure (THE) accounted for about 3.8% of the GDP at 5,28,484 crores, of which the government health expenditure was 1,61,863 crores (1.18% of the total GDP) and accounting for about 30% of the THE. Of the goverenment health expenditure, 64.4% was incurred by the state government. Household out-of-pocket expenditure was 64% of the THE. So even in 2016, the Government was still spending quite a small percentage on public health and about 65% of that was from state budgets [4]. These calculations were based on guidelines from the System of Health Account Estimates [5]. 
  
-Himachal Pradesh is an interesting case, a Northern Himalayan state which extends for over 55,673 km². It has a projected population of 74.35 Lakhs in 2019 and about 90% of this population is Rural. 
-The difficult terrain lends itself to complications with the provision of healthcare and in 2005, The central government introduced the National Rural Health Mission (later called the National Health Mission) which was implemented in 18 states including Himachal Pradesh. 
+Himachal Pradesh is an interesting case, a Northern Himalayan state which extends for over 55,673 km². It has a projected population of 74.35 Lakhs in 2019 and about 90% of this population is rural [6]. 
+The difficult terrain lends itself to complications with the provision of healthcare and in 2005, The central government introduced the National Rural Health Mission (later called the National Health Mission) which was implemented in 18 states including Himachal Pradesh [7]. 
 
-Since it's introduction, the Public health expenditure in Himachal Pradesh has been increasing and in 2016,
-the Government's Health Expenditure was 47% of the Total Health Expenditure and accounted for 1.4% of the state's GDP and 6.4% of the Total Government Expenditure and it also had the highest per-capita spending of all states at -- however the Out of Pocket expenditure was still about 49.5%. [National Health Account Estimates,2018](https://mohfw.gov.in/sites/default/files/NHA_Estimates_Report_2015-16_0.pdf)
+Since its introduction, the public health expenditure in Himachal Pradesh has been increasing, and in 2016 the government's health expenditure was 47% of the THE and accounted for 1.4% of the state's GDP and 6.4% of the Total Government Expenditure. It also had the highest per-capita spending of all states at -- however the out-of-pocket expenditure was still about 49.5% [4].
 
-However, there have not been many attempts to quanitify the role of public health expenditure on the health outcomes in this state.
+There have not been many attempts to quanitify the role of public health expenditure on the health outcomes in this state.
 
-The aim of this study would be to map trends in Public Health Expenditure data and compare it with changes in Public Health Infrastructure and health outcomes over time and answer the question 
+The aim of this study would be to map trends in public health expenditure data and compare it with changes in public health infrastructure and health outcomes over time and answer the question 
 
 "Is public health expenditure in Himachal Pradesh translating into actual improvements in health outcomes?"
 
-## Objectives/ Endpoints
+## Objectives
 
 This study aims to study three different sources of data and 
 
-a) Describe trends in Rural Health infrastructure with changes in Public Healthcare expenditure. Rural health infrastructure endpoints that we will be studying are numbers of Primary Healthcare Centres (PHC), Community Healthcare Centres (CHC) and Subcentres, as well as Healthcare manpower in these centres.
--we will assess the impact of public health expenditure on healthcare centres.
-
-b) Describe trends in health outcomes with the changing Public Healthcare expenditure. The outcomes we will look at are Imfant Mortality Rate, Under 5 Mortality Rate,(maternity Care, family planning methods, delivery care), vaccinations and rates of anemia. 
-- We will assess the impact of public health expenditure on infant and child mortality and vaccination rates.
+a) Describe trends in rural health infrastructure with changes in public healthcare expenditure. rural health infrastructure endpoints that we will be studying are numbers of Primary Healthcare Centres (PHC), Community Healthcare Centres (CHC) and Subcentres, as well as healthcare manpower in these centres.  
+   - we will assess the impact of public health expenditure on healthcare centres.  
+   
+b) Describe trends in health outcomes with the changing public healthcare expenditure. The outcomes we will look at are Infant Mortality Rate, Under 5 Mortality Rate, vaccinations and rates of anemia (and optionally assess maternity Care, family planning methods, delivery care).  
+   - we will assess the impact of public health expenditure on infant and child mortality and vaccination rates.
 
 ## Methodology 
 
@@ -55,13 +54,13 @@ This study will be consolidating time series data from three different sources. 
 
 ## State Budget Data
 
-- To observe (state-wide and district-specific) changes in Public health expenditure over time 
+- To observe (state-wide and district-specific) changes in public health expenditure over time 
 as well as changes in the component-wise break up of public health expenditure over time.
 
 For the purpose of this study we will consider public health expenditure as revenues and capital expenditures on the
 budget major heads “Medical and Public Health” and “Family Welfare”.
 
--In this case, the relevant Major Heads are 2210 – Revenue Expenditure on Medical and Public Health, 2211 - Revenue Expenditure on Family Welfare, 4210 - Capital Expenditure on Medical and Public Health and 4211- Capital Expenditure on Family Welfare.
+-In this case, the relevant Major Heads are 2210; Revenue Expenditure on Medical and Public Health, 2211; Revenue Expenditure on Family Welfare, 4210; Capital Expenditure on Medical and Public Health and 4211; Capital Expenditure on Family Welfare.
   
 For greater detail:
   
@@ -77,17 +76,18 @@ The list of Major, Sub-Major, Minor heads for PHC's CHC's and Sub-centres are
 and  
 
 4210-03-104 for capital expenditure on Sub-Centres.
-(I have not included expenditures under medical reimbursements as well as account heads for sanitation. Please feel free to give better descriptors for public health expenditures.)
 
-Just to explore, I have outlined below the Total state expenditure for 2018-2019 and the Public health Component for 2018-2019.
+(EDITORIAL NOTE: I have not included expenditures under medical reimbursements as well as account heads for sanitation. Please feel free to give better descriptors for public health expenditures.)
 
-```{r state_budget_data, echo=FALSE, fig.width=12, fig.height=9}
+Just to explore, I have outlined below the Total state expenditure for 2018-2019 and the Public health Component for 2018-2019 in Figure 1.
 
-library(lubridate)
-library(ggplot2)
-library(dplyr)
-library(scales)
-library(reshape2)
+```{r state_budget_data, echo=FALSE,  message=FALSE, warning=FALSE, fig.width=12, fig.height=9}
+
+suppressWarnings(library(lubridate))
+suppressWarnings(library(ggplot2))
+suppressWarnings(library(dplyr))
+suppressWarnings(library(scales))
+suppressWarnings(library(reshape2))
 
 budget <- read.csv ("HP budet and expenditure data/hoa_wise_prep_data.csv", header = TRUE, stringsAsFactors = FALSE) ##read budget data
 
@@ -123,7 +123,7 @@ budget_medical_total_long <- melt(budget_medical_total, id = "month_year", measu
 expenditure_medical_total_long <- melt(expenditure_medical_total, id = "month_year", measure = c("Total_Monthly_exp","Medical_exp"))
 ##same as above
 
-plot1 <- ggplot (data = expenditure_medical_total_long,aes(x = month_year, y=value, color = variable, group = variable)) + geom_line(size=1)+ geom_point(size=3)+scale_y_continuous(labels = scales::comma)+ theme(axis.text.x = element_text(angle = 90, hjust = 1))+ ggtitle("Plot of monthly expenditure and public health expenditure in 2018-2019") + xlab("time(month-year)") + ylab("Expenditure in Rs")
+plot1 <- ggplot (data = expenditure_medical_total_long,aes(x = month_year, y=value, color = variable, group = variable)) + geom_line(size=1)+ geom_point(size=3)+scale_y_continuous(labels = scales::comma)+ theme(axis.text.x = element_text(angle = 90, hjust = 1))+ ggtitle("Figure 1: Plot of monthly expenditure and public health expenditure in 2018-2019") + xlab("time(month-year)") + ylab("Expenditure in Rs")
 
 print (plot1)
 
@@ -137,29 +137,29 @@ print (plot1)
 
 - This data is collected by the Ministry of Health and Family Welfare and put out by the National Health Mission (NHM) previously called National Rural Health Mission (NRHM) every year from 2005.  
 
-- It provides data of Rural Health Statistics. Rural Health Statistics data usually contains infrastructural information and the building positions of Sub Centres, Primary Health Centres (PHCs) and Community Health Centres (CHCs).  
+- Rural Health Statistics data usually contains infrastructural information and the building positions of Sub Centres, Primary Health Centres (PHCs) and Community Health Centres (CHCs).  
 
-It also contains state wise number of Sub Divisional Hospital, District Hospital & Mobile Medical Units and information regarding numbers of Specialist Doctors, Health Workers, Auxiliary Mid wife Nurses (ANM), Nursing Staff, Health Assistants, Radiographers and Pharmacists.  
+It also contains state wise number of Sub Divisional Hospital, District Hospital & Mobile Medical Units and information regarding numbers of Specialist Doctors, Health Workers, Auxiliary Nurse Midwife (ANM), Nursing Staff, Health Assistants, Radiographers and Pharmacists.  
 
-The plot below shows the changes in numbers of PHC's, CHC's and Sub-centres since 1991. It is observed that while the number of subcentres are very high and increasing, CHC's have remained mostly the same. PHC's have been gradually increasing with time. The [Rural Healthcare System in India](https://mohfw.gov.in/sites/default/files/rural%20health%20care%20system%20in%20india.pdf) offers defintions of the different tiers of these healthcare centres.
+The plot below (Figure 2) shows the changes in numbers of PHC's, CHC's and Sub-centres since 1991. It is observed that while the number of subcentres are very high and increasing, CHC's have remained mostly the same. PHC's have been gradually increasing with time. The NRHM report on Rural Health care systems offers defintions of the different tiers of these healthcare centres.
 
-```{r time_trend, echo=FALSE}
+```{r time_trend, echo=FALSE, message=FALSE, warning=FALSE}
 rural_infra <- read.csv("Rural_infrastructure_data/hospitals_hp_time_series.csv", header = TRUE)
 
 names(rural_infra)[names(rural_infra) == "ï..Sub_centres"] <- "Subcentre"
 
 rural_infra_long <- melt(rural_infra, id = "Years", measure = c("Subcentre", "Primary_healthcare_centres","Community_healthcare_centre"))
 
-plot_rural <- ggplot (data = rural_infra_long, aes(x = Years, y=value, color = variable, group = variable)) + geom_line(size=1)+ geom_point(size=3)+ theme(axis.text.x = element_text(angle = 90, hjust = 1))+ ggtitle("Time trend of PHC's, CHC's and Sub-centres over time") + xlab("years") + ylab("Numbers")
+plot_rural <- ggplot (data = rural_infra_long, aes(x = Years, y=value, color = variable, group = variable)) + geom_line(size=1)+ geom_point(size=3)+ theme(axis.text.x = element_text(angle = 90, hjust = 1))+ ggtitle("Figure 2: Time trend of PHC's, CHC's and Sub-centres over time") + xlab("years") + ylab("Numbers")
 
 print (plot_rural)
 ```
 
-The graph below shows a district-wise distribution of PHC's against public health expenditure for 2018-2019 (This size of the circles indicates the population of the district). This data was extracted from the NRHM for 2018 and Expenditure data for 2018 and census data from 2011.
+Figure 3 shows a district-wise distribution of PHC's against public health expenditure for 2018-2019 (This size of the circles indicates the population of the district). This data was extracted from the NRHM for 2018 and Expenditure data for 2018 and census data from 2011.
 
 This information can be used to assess the impact of public health expenditure on the number of hospitals over time and assess if there are other determinants such as if the population is urban or rural
 
-```{r district_data, echo = FALSE, fig.width=12, fig.height=10}
+```{r district_data, message=FALSE, warning=FALSE, echo = FALSE, fig.width=12, fig.height=10}
 
 district_exp <- read.csv("HP budet and expenditure data/districtwise_spend.csv", header = TRUE)
 district_exp$district <- district_exp$ï..district
@@ -169,15 +169,15 @@ plot3 <- ggplot (data = district_exp,
                  aes(x = Public_Health_Expenditure,y=Number_PHC, fill = district, size=Population))+
                   geom_point(alpha = 0.5, shape = 21)+scale_x_continuous(labels = scales::comma)+  
                   scale_size(range = c(.1, 24), name="Population")+
-                  ggtitle("District-wise public health expenditure and number of hospitals") +
+                  ggtitle("Figure 3: District-wise public health expenditure and number of hospitals") +
                   theme_bw()+
                   xlab("District wise healthcare expenditure in Rs") + ylab("Number of Primary Health Care Centres")
 plot3
 ```
 
-The multipanel plot below shows differences between 2005 and 2018 of numbers of healthcare workers (required according to NHM guidelines, sanctioned, in-position and shortfall), including doctors, nurses, female health care workers and specialists (OB-Gyn).
+The multipanel plot (Figure 4) shows differences between 2005 and 2018 of numbers of healthcare workers (required according to NHM guidelines, sanctioned, in-position and shortfall), including doctors, nurses, female health care workers and specialists (OB-Gyn).
 
-```{r health_care workers, echo=FALSE}
+```{r health_care workers, echo=FALSE, message=FALSE, warning=FALSE}
 
 library(reshape2)
 
@@ -190,8 +190,8 @@ health_worker$year<- factor(health_worker$year,labels = c("2005", "2018"))
 health_worker_long <- melt(health_worker, id = c("year", "X"))
 
 plot_medical<- ggplot(health_worker_long, aes(x = year, y = value, fill = X)) +
-    geom_bar(position = "identity", stat = "identity") +
-    facet_wrap( ~ variable)
+    geom_bar(position = "identity", stat = "identity") + 
+    facet_wrap( ~ variable)+ ggtitle("Figure 4: Changes in healthcare manpower between 2005 and 2018")
 
 plot_medical
 
@@ -201,30 +201,42 @@ A prelimnary look at some of this data suggests that while the numbers of PHC's,
 
 ## National Family Health Survey
 
-- This is a large-scale, multi-round survey conducted in a representative sample of households throughout India. This is also conducted by the Ministry of Health and Family Welfare [NFHS](http://rchiips.org/nfhs/).
+- This is a large-scale, multi-round survey conducted in a representative sample of households throughout India. This is also conducted by the Ministry of Health and Family Welfare [8].
 
 - There are four surveys available at the moment from 1992-2015. The latest survey NFHS 2014 outlines 114 health outcome indicators.  
 
 - This study focuses on the impact of Public health expenditure on some health outcome indicators (specifically vaccination and Infant Mortality) from NFHS-3,NFHS-4 and NFHS-5(the first phase to be released by January 2020).
 
-- Just a prelimnary look at this data shows that while Himachal Pradesh performs well on many of these indicators, vaccination rates have decreased steadily since 2005. 
+- Just a preliminary look at this data shows that while Himachal Pradesh performs well on many of these indicators, vaccination rates have decreased steadily since 2005 (Figure 5). 
 
-```{r vaccines, echo=FALSE}
+```{r vaccines, echo=FALSE, message=FALSE, warning=FALSE}
 
 vaccines <- read.csv("NFHS/vaccine.csv")
 
 
 names(vaccines)[names(vaccines) == "ï..year"] <- "year"
 
-plot_vaccine<- ggplot (data = vaccines, aes(x = year, y=Percentage_fully_immunized, group = 1)) + geom_line(size=1)+ geom_point(size=3)+ theme(axis.text.x = element_text(angle = 90, hjust = 1))+ ggtitle("Percentage of children 12-23 months old who have been fully immunized") + xlab("years") + ylab("Percentage of children")
+plot_vaccine<- ggplot (data = vaccines, aes(x = year, y=Percentage_fully_immunized, group = 1)) + geom_line(size=1)+ geom_point(size=3)+ theme(axis.text.x = element_text(angle = 90, hjust = 1))+ ggtitle("Figure 5: Percentage of children 12-23 months old who have been fully immunized") + xlab("years") + ylab("Percentage of children")
 
 print(plot_vaccine)
 
 ```
 As part of this data analysis, the impact of public health expenditure on these health outcomes can be quantified. Other determinants that are related to these health outcomes can also be explored, such as changes to Sub-centres which in rural areas have been tasked with vaccine education and advocacy. 
 
-## Limitations (The limitations section is prelimnary and will be appended with draft changes)
+## Limitations (EDITORIAL NOTE: The limitations section is prelimnary and will be appended with draft changes)
 
 - Defintion of Public health expenditure data: The requirements for data to be considered public health expenditure data seems to change with different and arriving at a consensus for the definition. 
 - Few data points for the health outcomes dataset (NFHS data).
 -Confounding factors that could affect health outcomes of populations
+
+## References {#References}
+
+1) [United Nations Development Programme - Expenditure on health](http://hdr.undp.org/en/content/expenditure-health-total-gdp)
+2) [WHO. Public spending on health - A closer look at global trends. 2018](https://apps.who.int/iris/handle/10665/276728)
+3) [Sahoo DP, Bhatia V. Public health legislations in India (Part-I). Indian J Community Fam Med 2018;4:10-5](http://www.ijcfm.org/article.asp?issn=2395-2113;year=2018;volume=4;issue=1;spage=10;epage=15;aulast=Sahoo;type=3)
+4)[National Health Mission. National Health Account Estimates for India, 2015-2016.2018](https://mohfw.gov.in/sites/default/files/NHA_Estimates_Report_2015-16_0.pdf)
+5)[WHO.A system of health accounts.2011](https://ec.europa.eu/eurostat/web/products-manuals-and-guidelines/-/KS-05-19-103)
+6)[National Health Mission.Rural Health Statistics.2017-2018](https://nrhm-mis.nic.in/Pages/RHS2017.aspx?RootFolder=%2FRURAL%20HEALTH%20STATISTICS%2F%28A%29RHS%20-%202017)
+7)[National Health Mission](https://nhm.gov.in/index1.php?lang=1&level=1&sublinkid=969&lid=49)
+8)[National Family Health Survey](http://rchiips.org/nfhs/)
+
