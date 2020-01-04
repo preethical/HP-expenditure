@@ -1,0 +1,28 @@
+---
+title: "Task list"
+author: "preethi"
+date: "1/3/2020"
+output: pdf_document
+---
+
+## Task List
+
+-- Literature search  
+ - Background on the use of public health expenditure data for public health outcomes: 
+   - Methodology employed in Studies conducted across the world  
+   - India and state specific studies. 
+ - Finalize the definition of Public health expenditure data and Account heads that fall under it.  
+   - Create a document with rationale for the use of the account heads. 
+-- Clean the available datasets 
+   - Primarily create a clean CSV from the yearly data collected on Rural Health Statistics from NRHM/NHM      since 2005
+   - Create a clean CSV from the data collected from the National Family Health Surveys. 
+   - Document the cleaning process
+-- Inital Exploratory analysis
+   Initial Results
+-- Collaborate with different stakeholders to best understand how to use the findings
+-- Complete Statistical analysis
+-- Brainstorm modes of assimiliating the inference
+-- Brainstorm extensibility
+
+
+
