@@ -1,0 +1,75 @@
+---
+title: "lit review"
+author: "preethi"
+date: "1/16/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Lit review
+
+A compilation of the literature review conducted
+
+## Sontakke_Review_vaccine_policy  
+
+Vaccination has proven to be one of the most cost effective child survival interventions
+- All countries in the world have some program to deliver vaccinations to remote areas and most of them target pregnant women, infants and children.  
+- Immunization programms vary between countries but vaccines against diphtheria, pertussis, tetanus, poliomyelitis, measles, hepatitis B are common across the world.  
+- UIP was given the status of a national technology mission in 1986.  
+- A specific immunization strengthening project (ISP) was designed to run from 2000-2003, which included three main components (polio eradication, strengthening routine immunization (RI), and strategic framework for development).  
+- India's vaccine industry ranks third in terms of volume globally in the world. The impact of vaccination suggest that IMR in India had fallen steadily to reach 40 deaths per 1000 live-birth as per sample registration system in 2013, while as per sample registration system 2012 it was 52 per 1000 live births. National vaccination coverage is believed to be around 72%. However, there are major differences in coverage among the states, ranging from below 30% to above 90% in some states. The private health sector provides an estimated 15-20% of immunization services  
+- It has been three years without any fresh cases of polio; India has officially eliminated the much dreaded disease effective January 2014.  
+- The elimination of maternal and neonatal tetanus comes a year after India eradicated polio. Maternal and neonatal tetanus is now reduced to less than one case per 1000 live births in all 675 districts of the country.  
+-There are well recognized challenges in the implementation of immunization program in the country as follows:
+  Weak VPD surveillance system.  
+  Lack of data on disease burden in India.  
+  Lack of diagnostic tools and specialized training for certain VPD.  
+  Lack of baseline surveillance data.  
+  Limited economic evaluations.  
+  Lack of a financial sustainability plan for the introduction of new vaccines.  
+ 
+ - On August 31, 2009 the Ministry of health and family welfare convened a meeting chaired by the additional secretary & director of national rural health mission, specifically to address various elements in UIP design and implementation (captured in the phrase, ‘re-engineering’). Follow up action is still awaited
+ 
+ - The result is the ‘Mission Indradhanush’ launched on 25th December, 2014 with an aim to cover all those children who are partially vaccinated or unvaccinated.  
+ - ‘Mission Indradhanush’ is a nationwide initiative with a special focus on 201 high focus districts. These districts account for nearly 50% of the total partially vaccinated or unvaccinated children in the country.
+- Mission Indradhanush will provide protection against seven life-threatening diseases (diphtheria, whooping cough, tetanus, polio, tuberculosis, measles and hepatitis B). In addition, vaccination against Japanese encephalitis and Haemophilus influenza type B will be provided in selected districts of the country. Vaccination against tetanus will be provided to the pregnant women.
+- Between 2009-2013 immunisation coverage has increased from 61% to 65%, indicating only 1% increase in coverage every year. To accelerate the process of immunization by covering 5% and more children every year, the mission mode has been adopted to achieve target of full coverage by 2020.
+- Between 2009-2013 immunisation coverage has increased from 61% to 65%, indicating only 1% increase in coverage every year. To accelerate the process of immunization by covering 5% and more children every year, the mission mode has been adopted to achieve target of full coverage by 2020.
+-High-focus 201 districts will be taken up for implementation in the first phase. Of these, 82 districts are in just four states of UP, Bihar, Madhya Pradesh and Rajasthan and nearly 25% of the unvaccinated or partially vaccinated children of India are in these 82 districts of four states. Moreover, 297 will be targeted for the second phase.
+
+Bhadoria et al (2019)  
+
+- Government of India has tried to rejuvenate its four decades old Universal Immunization Programme (UIP) by recently
+launching Mission Indradhanush in 2014, followed by IntensifiedMission Indradhanush in 2017 to boost up immunization coverage.
+UIP have also brought in newer vaccines, changed dose schedules, open vial policy and a robust surveillance system.  
+
+- Vaccination under Routine Immunization (RI) is one of the most cost-effective health investment any country could make. Global relentless efforts to reach vulnerable in hardto- reach pocket areas have saved countless lives over the years. Such an intervention not only protects individuals
+against disabling diseases but also marks opportunity for leading a healthier and more productive life    
+- In 2018, an estimated 19.4 million infants worldwide were not reached with routine immunization services such as 3 doses of DTP vaccine. Around 60% of these children live in 10 countries: Angola, Brazil, the Democratic Republic of the Congo, Ethiopia, India, Indonesia, Nigeria, Pakistan, the Philippines and Viet Nam.  
+
+- National Family Health Survey-4 (NFHS-4) cites that national full immunization coverage
+against six vaccines [Bacillus Calmette-Guérin (BCG), measles, and three doses each of polio and Diptheria, Pertussis, Tetanus (DPT)] among children in 12–23 mo of age has reached only up to 62% that widely ranges between 35.7% in Nagaland and 91.1% in Puducherry.  
+
+- GoI formally launched a nationwide Expanded Programme on Immunization (EPI) in 1978, that later expanded to Universal Immunization Programme (UIP) in 1985  
+
+- Since then, programme dynamics has evolved over the years. India, along with WHO-South East
+Asia Region (SEAR), was declared polio-free; the country achieved Maternal and neonatal tetanus elimination (MNTE).
+
+- To address changing public health needs of country, UIP underwent certain recent changes. This includes addition of newer vaccines, incorporation of 2-dose schedule for Measles rubella
+(MR) and Japanese encephalitis (JE), open vial policy implementation, VPDs surveillance, strengthened reporting of Adverse event following immunization (AEFI), Mission Indradhanush etc.  
+
+- Presently, total 9 million immunization sessions are occurring yearly in India catering to an annual birth cohort of 27 million children and supported by nearly 1.5 lakh Auxiliary Nurse
+Midwives (ANMs) and 27,000 cold chain points.
+
+- With the introduction of Pneumococcal Conjugate Vaccine (PCV) under UIP in 2017, India’s UIP is now providing protection against twelve VPDs which includes tuberculosis, polio, diphtheria, pertussis, tetanus, hepatitis B (Hep B), Haemophilus influenza type B (Hib), rotavirus, Japanese encephalitis
+(JE) (in endemic districts), measles, rubella, and pneumococcal pneumonia under the common flagship of
+National Health Mission.
+
+- Despite UIP being operational for more than 30 y, country
+could fully immunize only 65% children in their first year of
+life as per the data of Rapid Survey on Children (RSOC),
+(2013–14).
+- 
