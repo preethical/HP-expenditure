@@ -9,7 +9,7 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Lit review
+## Lit review
 
 A compilation of the literature review conducted
 
@@ -40,7 +40,7 @@ Vaccination has proven to be one of the most cost effective child survival inter
 - Between 2009-2013 immunisation coverage has increased from 61% to 65%, indicating only 1% increase in coverage every year. To accelerate the process of immunization by covering 5% and more children every year, the mission mode has been adopted to achieve target of full coverage by 2020.
 -High-focus 201 districts will be taken up for implementation in the first phase. Of these, 82 districts are in just four states of UP, Bihar, Madhya Pradesh and Rajasthan and nearly 25% of the unvaccinated or partially vaccinated children of India are in these 82 districts of four states. Moreover, 297 will be targeted for the second phase.
 
-Bhadoria et al (2019)  
+## Bhadoria et al (2019)  
 
 - Government of India has tried to rejuvenate its four decades old Universal Immunization Programme (UIP) by recently
 launching Mission Indradhanush in 2014, followed by IntensifiedMission Indradhanush in 2017 to boost up immunization coverage.
@@ -68,8 +68,23 @@ Midwives (ANMs) and 27,000 cold chain points.
 (JE) (in endemic districts), measles, rubella, and pneumococcal pneumonia under the common flagship of
 National Health Mission.
 
-- Despite UIP being operational for more than 30 y, country
-could fully immunize only 65% children in their first year of
-life as per the data of Rapid Survey on Children (RSOC),
-(2013–14).
+- Despite UIP being operational for more than 30 y, country could fully immunize only 65% children in their first year of life as per the data of Rapid Survey on Children (RSOC) (2013–14).
+
+- The other major concern is the existing rural-urban differences and socioeconomic hierarchies. Most progress has reportedly come from rural areas (from 39%to 61%) with urban areas strikingly witnessing low improvements (from 58% to 64%).  
+
+- Under this plan, states conducted BIntensified Mission Indradhanush^ drives to cover all left
+outs in 118 priority districts including 52 Northeastern districts, and 17 urban cities with identified low coverage. It is carried out for seven working days from seventh day of every month, starting from 7 October 2017 for four consecutive months.  
+
+- why do we need to resort for episodic immunization campaigns for improving coverage? The answer
+partly lies in the fact that real immunization benefit quantified by true reduction in disease incidence is not monitored in real time. UIP does not know what it has actually achieved
+quantitatively by way of disease burden reduction, the true outcome intended of UIP.
+
+##SPHS Annual Report 2017
+
+- eVIN: Electronic vaccine intelligence network. app for digitizing vaccine stocks in the country. 
+   eVIN solution has been able to reduce the frequency of vaccine stock outs by almost 72 percent across 11 implementing states
+
+## Gurnani et al 2018
+
 - 
+
